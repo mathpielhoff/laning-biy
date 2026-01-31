@@ -3,12 +3,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="BotItYourself - La plateforme No-Code pour créer et déployer des agents IA connectés à vos outils métiers en toute sécurité.">
+    <meta name="theme-color" content="#D88C9A">
     <title>BotItYourself - Agents IA Connectés & Sécurisés</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -21,11 +23,15 @@
               'soft-periwinkle': '#8E7DBE',
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
             },
             animation: {
               'marquee': 'marquee 40s linear infinite',
               'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 20s linear infinite',
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+              'scale-in': 'scaleIn 0.3s ease-out',
             },
             keyframes: {
               marquee: {
@@ -35,20 +41,127 @@
               float: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-20px)' },
-              }
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              scaleIn: {
+                '0%': { opacity: '0', transform: 'scale(0.95)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
             }
           }
         }
       }
     </script>
     <style>
-      body {
-        background-color: #F1E3D3; /* Almond Cream as default bg */
+      /* Base styles */
+      * {
+        -webkit-tap-highlight-color: transparent;
       }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        background-color: #F1E3D3;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Glass morphism card */
       .glass-card {
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      /* Smooth transitions for interactive elements */
+      button, a, .interactive {
+        transition: all 0.2s ease;
+      }
+
+      /* Better touch targets on mobile */
+      @media (max-width: 768px) {
+        button, a {
+          min-height: 44px;
+          min-width: 44px;
+        }
+      }
+
+      /* Custom scrollbar for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(216, 140, 154, 0.3);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(216, 140, 154, 0.5);
+      }
+
+      /* Animate-in classes for scroll animations */
+      .animate-in {
+        animation: slideUp 0.5s ease-out forwards;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+
+      .slide-in-from-left-4 {
+        animation: slideFromLeft 0.5s ease-out forwards;
+      }
+
+      @keyframes slideFromLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(-1rem);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Focus styles for accessibility */
+      :focus-visible {
+        outline: 2px solid #D88C9A;
+        outline-offset: 2px;
+      }
+
+      /* Safe area insets for mobile devices with notches */
+      @supports (padding: max(0px)) {
+        body {
+          padding-left: max(0px, env(safe-area-inset-left));
+          padding-right: max(0px, env(safe-area-inset-right));
+        }
       }
     </style>
 </head>
