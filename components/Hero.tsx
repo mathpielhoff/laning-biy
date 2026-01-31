@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Sparkles, ArrowRight, CreditCard, Users, Code, Send, Zap, Rocket, Play, Star } from 'lucide-react';
+import { Sparkles, ArrowRight, CreditCard, Users, Code, Send, Zap, Rocket, Play, Shield, Blocks } from 'lucide-react';
 
 const DEPARTMENTS = [
   {
@@ -104,25 +104,19 @@ const Hero: React.FC = () => {
             }
           </p>
 
-          {/* Social proof mini */}
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 py-2">
-            <div className="flex -space-x-2">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className={`w-8 h-8 rounded-full border-2 border-white shadow-md ${
-                  i === 0 ? 'bg-gradient-to-br from-old-rose to-soft-periwinkle' :
-                  i === 1 ? 'bg-gradient-to-br from-muted-teal to-soft-apricot' :
-                  i === 2 ? 'bg-gradient-to-br from-soft-periwinkle to-muted-teal' :
-                  'bg-gradient-to-br from-soft-apricot to-old-rose'
-                }`} />
-              ))}
+          {/* Key features badges */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 md:gap-3 py-2">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted-teal/10 text-muted-teal text-xs font-semibold">
+              <Shield size={12} />
+              <span>Sécurité Enterprise</span>
             </div>
-            <div className="text-sm text-gray-600">
-              <span className="font-bold text-gray-900">500+</span> équipes
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-soft-periwinkle/10 text-soft-periwinkle text-xs font-semibold">
+              <Blocks size={12} />
+              <span>250+ Connecteurs</span>
             </div>
-            <div className="flex items-center gap-0.5 text-amber-500">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={12} fill="currentColor" />
-              ))}
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-old-rose/10 text-old-rose text-xs font-semibold">
+              <Zap size={12} />
+              <span>No-Code</span>
             </div>
           </div>
 
